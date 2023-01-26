@@ -1,0 +1,21 @@
+.animate-underline {
+    position: relative;
+}
+
+.animate-underline:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -.25rem;
+    /* correct font */
+    left: 1px;
+    width: 0;
+    height: 2px;
+    background-color: #93c5fd;
+    transition: ease-out .2s;
+}
+
+.animate-underline:hover::after {
+    width: 90%;
+    background-color: #3b82f6;
+}

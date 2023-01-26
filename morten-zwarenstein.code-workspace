@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"emmet.includeLanguages": {
+			"nunjucks": "html",
+			"njk": "html"
+		},
+		"tailwindCSS.emmetCompletions": true,
+		"tailwindCSS.includeLanguages": {
+			"njk": "njk",
+			"html": "html",
+			"css": "css",
+			"js": "js"
+		},
+		"editor.quickSuggestions": {
+			"strings": true
+		},
+		"tailwindCSS.suggestions": true
+	}
+}

@@ -1,0 +1,153 @@
+---
+title: Home
+collection: collections.posts
+---
+{% extends "layouts/base.njk"%}
+{% block styles %}
+<link rel="stylesheet" href="/styles/index.css">
+{% endblock %}
+
+{% block scripts %}
+<script src="/scripts/index.js"></script>
+{% endblock %}
+
+{% block content %}
+<header id="header">
+    <div class="w-full px-6 lg:px-0 mx-auto container pt-16 relative mb-20 lg:mb-5">
+        <div id="_js-total" class="font-header font-semibold text-7xl lg:text-8xl transition origin-top-left">
+            <div class="flex">
+                <h1 id="_js-left-part">
+                    TEN
+                </h1>
+                <h1 id="_js-right-part">MOR<span id="_js-e">E</span></h1>
+            </div>
+        </div>
+        <div class="font-header font-light text-2xl mt-4 mb-8">
+            Building impact-driven websites and apps.
+        </div>
+        <div>
+            <button class="text-lg rounded bg-blue-300 text-slate-800 px-4 py-2 hover:bg-blue-500 hover transition flex items-end gap-1">
+                Learn more
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 24 24" width="24" fill="currentColor"><path d="M10.586 5.657l-3.95-3.95A1 1 0 0 1 8.05.293l5.657 5.657a.997.997 0 0 1 0 1.414L8.05 13.021a1 1 0 1 1-1.414-1.414l3.95-3.95H1a1 1 0 1 1 0-2h9.586z"></path></svg>
+            </button>
+        </div>
+    </div>
+</header>
+<div class="fill-blue-300">
+    <svg class="w-100" id="visual" viewBox="0 0 900 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><path d="M0 61L37.5 62C75 63 150 65 225 59.7C300 54.3 375 41.7 450 36.7C525 31.7 600 34.3 675 40C750 45.7 825 54.3 862.5 58.7L900 63L900 101L862.5 101C825 101 750 101 675 101C600 101 525 101 450 101C375 101 300 101 225 101C150 101 75 101 37.5 101L0 101Z" fill="currentColor" stroke-linecap="round" stroke-linejoin="miter"></path></svg>
+</div>
+<main>
+    <div class="bg-blue-300 py-20 text-slate-800">
+        <div class="container mx-auto px-6 lg:px-0">
+            <section>
+                <div class="mb-12">
+                    <h1 class="mb-2 font-header text-5xl font-semibold uppercase">
+                        Hey, you know what's cool?
+                    </h1>
+                    <h2 class="mb-3 font-header font-medium text-2xl">
+                        Building a better world one website at a time. That's what we're doing at TENMORE
+                    </h2>
+                    <p class="text-justify">
+                        Welcome to TENMORE, my name is Morten and I am the founder of this company. I am a software engineer with 5 years of experience in the field, and I am excited to introduce you to the mission of TENMORE. We are a company that is dedicated to making the world a better place by providing technology solutions for impact-driven companies. We specialize in building websites and apps that are not only functional and user-friendly, but also make a real difference in the world. Our goal is to empower startups and socially-conscious businesses to make an impact in the world, by providing them with the necessary technology to achieve their goals. We believe that through technology, we can make a positive change in the world, and we are honored to be a part of that change. Join us on our mission to build a better world, one website at a time.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="text-blue-300 py-20 bg-slate-800">
+        <div class="container mx-auto px-6 lg:px-0">
+               <section>
+                <div class="flex items-center gap-8 lg:gap-16 flex-col lg:flex-row">
+                    <div class="py-4 mb-8">
+                        <h1 class="mb-2 font-header text-5xl font-semibold uppercase">
+                            My services
+                        </h1>
+                        <div class="mt-10">
+                            <h2 class="mb-3 font-header font-medium text-2xl">
+                                Website development
+                            </h2>
+                            <p class="text-justify">
+                                We specialize in creating custom websites that are tailored to your business needs. We offer a range of services, from design and development, to optimization and maintenance. Our goal is to create a website that not only looks great but also performs well, generates leads and convert them into customers.
+                            </p>
+                        </div>
+                        <div class="mt-10">
+                            <h2 class="mb-3 font-header font-medium text-2xl">
+                                App development
+                            </h2>
+                            <p class="text-justify">
+                                We have experience in developing mobile apps for iOS and Android platforms. We can help you turn your app idea into a reality. We'll work with you to understand your idea, your target audience, and your goals, and we'll help you create an app that meets your needs and exceeds your expectations.
+                            </p>
+                        </div>
+                        <div class="mt-10">
+                            <h2 class="mb-3 font-header font-medium text-2xl">
+                                Website/App Audit
+                            </h2>
+                            <p class="text-justify">
+                                We understand that not everyone needs a new website or app. We offer a website/app audit service that can help you understand the current state of your website or app, and provide recommendations for improvements. We can help you identify issues with design, functionality, and performance, and help you make the necessary changes to improve user experience and increase conversions.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="bg-world border-8 border-blue-300 rounded-full overflow-hidden w-48 h-48 lg:w-96 lg:h-96">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="bg-blue-300 py-20 text-slate-800">
+        <div class="container mx-auto px-6 lg:px-0">
+            <h1 class="mb-8 font-header text-5xl font-semibold uppercase">
+                Blog & news
+            </h1>
+            <div class="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-8">
+                {% for post in posts %}
+                    {% if loop.index <= 5 %}
+                        <div>
+                            <h2 class="text-xl font-semibold mb-2">
+                                {{ post.title | capitalize }}
+                            </h2>
+                            <div class="mb-3">
+                                {% if post.excerpt %}
+                                    {{ post.excerpt | truncate(150) }}
+                                {% else %}
+                                    {{ post.content | safe | striptags | truncate(150) }}
+                                {% endif %}
+                            </div>
+                            <a href="" class="text-slate-800 font-semibold hover:text-blue-500 transition">
+                                Read more
+                                <svg class="inline align-middle h-5" xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 24 24" width="24" fill="currentColor"><path d="M11.314 7.071l-4.95-4.95A1 1 0 0 1 7.778.707l5.657 5.657a1 1 0 0 1 0 1.414l-5.657 5.657a1 1 0 0 1-1.414-1.414l4.95-4.95zm-6 0l-4.95-4.95A1 1 0 1 1 1.778.707l5.657 5.657a1 1 0 0 1 0 1.414l-5.657 5.657a1 1 0 0 1-1.414-1.414l4.95-4.95z"></path></svg>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="text-blue-300 py-20 bg-slate-800">
+        <div class="container mx-auto px-6 lg:px-0">
+            <h1 class="mb-3 font-header text-5xl font-semibold uppercase">
+                Interested?
+            </h1>
+            <h2 class="mb-6 font-header font-medium text-2xl">
+                Shoot me a message. We can discuss your needs over a cup of coffee.
+            </h2>
+            <div class="flex w-100 group">
+                <input id="_js-email-input" type="email" required
+                class="block text-blue-300 w-full lg:w-72 bg-slate-800 font-semibold placeholder:text-slate-400 outline-none py-2 px-4 rounded-l border-2 border-r-0 border-blue-300" 
+                placeholder="your@email.com" value="test@test.com">
+                <button id="_js-submit-email" aria-label="Verzenden" class="px-3 py-2 rounded-r border-2 border-l-0 text-slate-800 enabled:border-blue-300 enabled:bg-blue-300 enabled:hover:text-blue-300 enabled:hover:bg-slate-800  transition">
+                    <svg id="_js-button-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 24 24" width="24" fill="currentColor"><path d="M10.586 5.657l-3.95-3.95A1 1 0 0 1 8.05.293l5.657 5.657a.997.997 0 0 1 0 1.414L8.05 13.021a1 1 0 1 1-1.414-1.414l3.95-3.95H1a1 1 0 1 1 0-2h9.586z"></path></svg>
+                    <svg id="_js-button-clock" class="opacity-100" xmlns="http://www.w3.org/2000/svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M9 11h2a1 1 0 0 1 0 2H8a.997.997 0 0 1-1-1V8a1 1 0 1 1 2 0v3zM1.869 6.861a1.5 1.5 0 1 1 2.077-1.76 7.967 7.967 0 0 1 1.126-.548A2.5 2.5 0 0 1 6.5 0h3a2.5 2.5 0 0 1 1.428 4.553c.39.154.767.337 1.126.548a1.5 1.5 0 1 1 2.077 1.76 8 8 0 1 1-12.263 0zM8 18A6 6 0 1 0 8 6a6 6 0 0 0 0 12zM6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3z"></path></svg>
+                </button>
+            </div>
+            <div id="_js-error-message" class="text-red-700 text-sm font-semibold py-2 hidden">
+                E-mail is required and needs to be valid!
+            </div>
+        </div>
+    </div>
+    <div class="bg-blue-300">
+        <svg class="w-full fill-slate-800" viewBox="0 0 900 70" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><path d="M0 11L21.5 12.7C43 14.3 86 17.7 128.8 17.2C171.7 16.7 214.3 12.3 257.2 10.3C300 8.3 343 8.7 385.8 8.8C428.7 9 471.3 9 514.2 11.3C557 13.7 600 18.3 642.8 20.5C685.7 22.7 728.3 22.3 771.2 21.2C814 20 857 18 878.5 17L900 16L900 0L878.5 0C857 0 814 0 771.2 0C728.3 0 685.7 0 642.8 0C600 0 557 0 514.2 0C471.3 0 428.7 0 385.8 0C343 0 300 0 257.2 0C214.3 0 171.7 0 128.8 0C86 0 43 0 21.5 0L0 0Z" stroke-linecap="round" stroke-linejoin="miter"></path></svg>
+    </div>
+</main>
+{% endblock %}
