@@ -1,0 +1,1 @@
+docker exec -i database /bin/bash -c "PGPASSWORD=directus psql --username directus directus" < ./migration/database/dump-1674855534.sql

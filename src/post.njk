@@ -1,0 +1,26 @@
+---
+pagination:
+  data: posts
+  size: 1
+  alias: post
+permalink: blog/{{ post.title | slugify}}/
+---
+{% extends "layouts/base.njk"%}
+
+{% block styles %}
+<link rel="stylesheet" href="/styles/index.css">
+{% endblock %}
+
+{% block scripts %}
+<script src="/scripts/post.js"></script>
+{% endblock %}
+
+{% block content %}
+<main class="py-6">
+    <div class="container mx-auto">
+        <h1 class="text-4xl font-header font-semibold mb-4">{{ post.title }}</h1>
+        {{ post.content | safe }}
+    </div>
+</main>
+
+{% endblock %}
