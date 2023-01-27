@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,11 +17,10 @@
     {% block styles %}
     {% endblock %}
 </head>
-<body class="bg-slate-800 text-blue-300">
+<body id="top" class="bg-slate-800 text-blue-300">
     {% include "partials/navbar.njk" %}
     {% block content %}{% endblock %}
     {% include "partials/footer.njk" %}
-    
     
     <script src="/scripts/lib/axios.min.js"></script>
     <script src="/scripts/lib/anime.min.js"></script>

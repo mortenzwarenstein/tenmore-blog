@@ -1,5 +1,5 @@
 <nav id="_js-navbar" class="sticky z-50 top-0 bg-slate-800 border-gray-200">
-  <div class="container px-6 py-2.5 relative flex flex-wrap items-center justify-between mx-auto">
+  <div class="container px-6 py-2.5 lg:px-0 relative flex flex-wrap items-center justify-between mx-auto">
     <div id="_js-logo" class="flex-1 transition opacity-0 font-header text-5xl font-medium lg:block">TENMORE</div>
     <button id="_js-toggle-menu" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-blue-300 rounded-lg lg:hidden" aria-controls="navbar-default" aria-expanded="false">
       <span class="sr-only">Open main menu</span>
@@ -10,20 +10,19 @@
     <div class="h-0 overflow-hidden shadow-lg transition absolute inset-x-0 top-full w-full lg:block lg:shadow-none lg:w-auto lg:h-auto lg:overflow-auto lg:relative" id="_js-navbar-content">
       <ul class="flex flex-col p-4 bg-slate-800 lg:flex-row lg:space-x-8 lg:mt-0 lg:text-xl lg:font-medium lg:border-0">
         <li>
-          <a href="#" class="block py-2 pl-3 pr-4 font-header transition text-blue-300 bg-blue-700 rounded lg:bg-transparent lg:text-blue-500 lg:p-0" aria-current="page">Home</a>
+          <a href="#" class="link-item block py-2 pl-3 pr-4 font-header transition text-blue-300 bg-blue-700 rounded lg:bg-transparent lg:p-0" aria-current="page">Home</a>
         </li>
         <li>
-          <a href="#" class="block py-2 pl-3 pr-4 font-header transition text-blue-300 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-500 lg:p-0">About</a>
+          <a href="#about" class="link-item block py-2 pl-3 pr-4 font-header transition text-blue-300 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-500 lg:p-0">About</a>
         </li>
         <li>
-          <a href="#" class="block py-2 pl-3 pr-4 font-header transition text-blue-300 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-500 lg:p-0">Services</a>
+          <a href="#services" class="link-item block py-2 pl-3 pr-4 font-header transition text-blue-300 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-500 lg:p-0">Services</a>
         </li>
+        {% if posts.length > 0 %}
         <li>
-          <a href="#" class="block py-2 pl-3 pr-4 font-header transition text-blue-300 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-500 lg:p-0">Pricing</a>
+          <a href="#blog" class="link-item block py-2 pl-3 pr-4 font-header transition text-blue-300 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-500 lg:p-0">Contact</a>
         </li>
-        <li>
-          <a href="#" class="block py-2 pl-3 pr-4 font-header transition text-blue-300 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-500 lg:p-0">Contact</a>
-        </li>
+        {% endif %}
       </ul>
     </div>
   </div>

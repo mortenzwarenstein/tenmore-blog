@@ -1,58 +1,83 @@
+const emailInput = document.querySelector('#_js-email-input');
+const button = document.querySelector('#_js-submit-email');
+const errorMessage = document.querySelector('#_js-error-message');
+const successMessage = document.querySelector('#_js-success-message');
+const sections = document.querySelectorAll('section');
+const links = document.querySelectorAll('.link-item');
+
+const BUTTON_CLASSES = ['bg-red-700', 'border-red-700'];
+const INPUT_CLASSES = ['border-red-700'];
+const VALID_BUTTON_CLASSES = ['bg-green-700', 'border-green-700'];
+const VALID_INPUT_CLASSES = ['border-green-700'];
+
 let menuOpen = false;
 let toggle = false;
 
-const clock = anime({
-    targets: '#_js-button-clock',
+const success = anime({
+    targets: '#_js-button-success',
     autoplay: false,
-    translateX: -10,
-    opacity: 0,
+    opacity: 1,
     loop: false,
-    direction: 'reverse',
-    easing: 'linear'
 });
 
+
 const arrow = anime({
-    targets: '#_js-button-arrow',
     autoplay: false,
-    translateX: 10,
+    targets: '#_js-button-arrow',
     opacity: 0,
     loop: false,
-    direction: 'normal',
 });
 
 const submitEmail = () => {
     if(!validateEmail()) return;
-    clock.play();
-    arrow.play();
-    const emailInput = document.querySelector('#_js-email-input');
-    // axios.post('http://localhost:8055/items/contacts', {
-    //     email: emailInput.value
-    // });
+    axios.post('http://localhost:8055/items/contacts', {
+        email: emailInput.value
+    }).then(val => {
+        const saved = val.status === 200 || val.status === 204;
+        if(saved) {
+            arrow.play();
+            success.play();
+            displayFeedback(true);
+        }
+    }).catch(err => {
+        displayFeedback(false, 'E-mail already exists in our system.');
+    });
 }
 
-const validateEmail = () => {
-    const emailInput = document.querySelector('#_js-email-input');
-    const button = document.querySelector('#_js-submit-email');
-    const errorMessage = document.querySelector('#_js-error-message')
+const resetFeedback = () => {
+    button.disabled = false;
+    emailInput.disabled = false;
+    button.classList.remove(...VALID_BUTTON_CLASSES, ...BUTTON_CLASSES);
+    emailInput.classList.remove(...VALID_INPUT_CLASSES, ...INPUT_CLASSES);
+    errorMessage.classList.add('hidden')
+    errorMessage.textContent = '';
+}
 
-    const BUTTON_CLASSES = ['bg-red-700', 'border-red-700'];
-    const INPUT_CLASSES = ['border-red-700'];
-
-    const valid = emailInput.value && /.+\@.+\..+/.test(emailInput.value);
-
+const displayFeedback = (valid, message) => {
     if(valid) {
-        button.classList.remove(...BUTTON_CLASSES);
         button.disabled = false;
-        emailInput.classList.remove(...INPUT_CLASSES);
-        errorMessage.classList.add('hidden');
+        emailInput.classList.add(...VALID_INPUT_CLASSES);
+        button.classList.add(...VALID_BUTTON_CLASSES);
+        emailInput.disabled = true;
+        successMessage.classList.remove('hidden');
+        button.disabled = true;
     } else {
+        button.disabled = true;
         button.classList.add(...BUTTON_CLASSES);
-        button.disabled = true
         emailInput.classList.add(...INPUT_CLASSES);
         errorMessage.classList.remove('hidden');
+        errorMessage.textContent = message;
     }
 
-    return valid;
+}
+
+const validateEmail = (e) => {
+    if(e?.key === 'Enter') submitEmail();
+    const validInput = emailInput.value && /.+\@.+\..+/.test(emailInput.value);
+    if(!validInput) displayFeedback(false, 'E-mail is required and needs to be valid!');
+    else resetFeedback();
+
+    return validInput;
 }
 const toggleLogo = (show) => {
     const logo = document.querySelector('#_js-logo');
@@ -77,6 +102,25 @@ const toggleMenu = () => {
     }
 }
 
+const activateNav = () => {
+    let current = '';
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 60) {
+            current = section.getAttribute("id"); 
+        }
+
+      });
+    
+      links.forEach((li) => {
+        li.classList.remove("text-blue-500");
+        if (li.getAttribute("href").replace('#','') === current) {
+          li.classList.add("text-blue-500");
+        }
+      });
+
+}
+
 const initObserver = () => {
     var observer = new IntersectionObserver((entries) => toggleLogo(entries[0].isIntersecting === false), { threshold: [0] });
     observer.observe(document.querySelector('#_js-total'));
@@ -84,8 +128,9 @@ const initObserver = () => {
 
 const initListeners = () => {
     document.querySelector('#_js-toggle-menu')?.addEventListener('click', toggleMenu);
-    document.querySelector('#_js-submit-email')?.addEventListener('click', submitEmail)
-    document.querySelector('#_js-email-input')?.addEventListener('keyup', debounce(validateEmail, 500));
+    button?.addEventListener('click', submitEmail);
+    emailInput?.addEventListener('keyup', validateEmail);
+    window.addEventListener('scroll', activateNav)
 }
 
 const initAnim = () => {

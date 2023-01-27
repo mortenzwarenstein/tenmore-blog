@@ -5,9 +5,13 @@
                 TENMORE
             </h2>
             <ul class="list-none block">
-                <li><a class="hover:underline" href="">Back to top</a></li>
-                <li><a class="hover:underline" href="">About me</a></li>
-                <li><a class="hover:underline" href="">Services</a></li>
+                <li><a class="hover:underline" href="#top">Back to top</a></li>
+                <li><a class="hover:underline" href="#about">About me</a></li>
+                <li><a class="hover:underline" href="#services">Services</a></li>
+                {% if posts.length > 0 %}
+                <li><a class="hover:underline" href="#blog">Blog</a></li>
+                {% endif %}
+                <li><a class="hover:underline" href="#contact">Contact</a></li>
             </ul>
         </div>
         <div class="flex gap-2 justify-center font-extralight text-slate-900 pb-12">
