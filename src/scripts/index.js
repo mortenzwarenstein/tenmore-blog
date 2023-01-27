@@ -109,7 +109,7 @@ const activateNav = () => {
         if (window.scrollY >= sectionTop - 60) {
             current = section.getAttribute("id"); 
         }
-
+        if(window.scrollY + window.innerHeight === document.documentElement.scrollHeight) current = sections[sections.length - 1].getAttribute('id');
       });
     
       links.forEach((li) => {
