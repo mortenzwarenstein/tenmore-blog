@@ -96,6 +96,7 @@ collection: collections.posts
         </div>
     </section>
     <section id="blog">
+        {{ posts | dump }}
         <div class="bg-blue-300 py-20 text-slate-800">
             <div class="container mx-auto px-6 lg:px-0">
                 <h1 class="mb-8 font-header text-5xl font-semibold uppercase">
@@ -116,7 +117,7 @@ collection: collections.posts
                                             {{ post.content | safe | striptags | truncate(150) }}
                                         {% endif %}
                                     </div>
-                                    <a href="" class="text-slate-800 font-semibold hover:text-blue-500 transition">
+                                    <a href="/blog/{{ post.title | slugify }}" class="text-slate-800 font-semibold hover:text-blue-500 transition">
                                         Read more
                                         <svg class="inline align-middle h-5" xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 24 24" width="24" fill="currentColor"><path d="M11.314 7.071l-4.95-4.95A1 1 0 0 1 7.778.707l5.657 5.657a1 1 0 0 1 0 1.414l-5.657 5.657a1 1 0 0 1-1.414-1.414l4.95-4.95zm-6 0l-4.95-4.95A1 1 0 1 1 1.778.707l5.657 5.657a1 1 0 0 1 0 1.414l-5.657 5.657a1 1 0 0 1-1.414-1.414l4.95-4.95z"></path></svg>
                                     </a>
@@ -159,8 +160,5 @@ collection: collections.posts
             </div>
         </div>
     </section>
-    <div class="bg-blue-300">
-        <svg class="w-full fill-slate-800" viewBox="0 0 900 70" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><path d="M0 11L21.5 12.7C43 14.3 86 17.7 128.8 17.2C171.7 16.7 214.3 12.3 257.2 10.3C300 8.3 343 8.7 385.8 8.8C428.7 9 471.3 9 514.2 11.3C557 13.7 600 18.3 642.8 20.5C685.7 22.7 728.3 22.3 771.2 21.2C814 20 857 18 878.5 17L900 16L900 0L878.5 0C857 0 814 0 771.2 0C728.3 0 685.7 0 642.8 0C600 0 557 0 514.2 0C471.3 0 428.7 0 385.8 0C343 0 300 0 257.2 0C214.3 0 171.7 0 128.8 0C86 0 43 0 21.5 0L0 0Z" stroke-linecap="round" stroke-linejoin="miter"></path></svg>
-    </div>
 </main>
 {% endblock %}
