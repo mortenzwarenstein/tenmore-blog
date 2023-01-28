@@ -30,6 +30,7 @@ const arrow = anime({
 
 const submitEmail = () => {
     if(!validateEmail()) return;
+    // TODO: Make this dynamic
     axios.post('http://api.tenmore.tech/items/contacts', {
         email: emailInput.value
     }).then(val => {
