@@ -30,7 +30,7 @@ const arrow = anime({
 
 const submitEmail = () => {
     if(!validateEmail()) return;
-    axios.post('http://localhost:8055/items/contacts', {
+    axios.post('http://api.tenmore.tech/items/contacts', {
         email: emailInput.value
     }).then(val => {
         const saved = val.status === 200 || val.status === 204;
