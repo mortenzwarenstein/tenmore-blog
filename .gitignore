@@ -2,3 +2,4 @@ node_modules
 _site
 data
 .env
+package-lock.json
